@@ -1,0 +1,22 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "./variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@mixin mobile{
+    @media (max-width: 767px) {
+        font-size: 12pt;
+        @content;
+    }
+}
+
+@mixin pad{
+    @media (min-width: 768px) and (max-width: 1023px) {
+        font-size: 14pt;
+        @content;
+    }
+}
+
+.routerlink{
+    text-decoration: none;
+}
