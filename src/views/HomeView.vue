@@ -1,4 +1,5 @@
 <script>
+import { RouterLink } from 'vue-router';
 export default{
   data(){
     return{
@@ -10,7 +11,12 @@ export default{
     }
   },
   components:{
-
+    RouterLink,
+  },
+  methods:{
+    goTo(x){
+      this.$router.push(x)
+    },
   }
 }
 </script>
@@ -18,10 +24,6 @@ export default{
 
 <template>
   <div class="showing">
-    <div class="header page">
-      <p class="title">Vote for</p>
-    </div>
-
     <div class="content page">
       <div class="first area">
         <div class="firstTitle">
@@ -30,18 +32,18 @@ export default{
         <div class="voteChoice">
           <div class="choiceGroup choice">
             <p>Group Poll</p>
-            <p class="textIntro">Let people vote, and find the option that suits everyone.</p>
+            <p class="textIntro">Choose your times, let people vote and find the option that suits everyone.</p>
           </div>
           <div class="choiceOne choice">
             <p>To Only</p>
-            <p class="textIntro">For one person to vote.</p>
+            <p class="textIntro">Ask someone to pick a time that you specify.</p>
           </div>
         </div>
       </div>
       <div class="second area">
         <div class="secondTitle">
           <p>My Vote</p>
-          <div class="addVote">
+          <div class="addVote" @click="goTo('/AddVote')">
             <i class="fa-solid fa-plus"></i>
           </div>
         </div>
@@ -85,17 +87,6 @@ export default{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.header{
-  height: 80pt;
-  background-color: #D0B8A8;
-  justify-content: center;
-  align-items: center;
-  .title{
-    font-size: 40pt;
-    margin: 0;
-  }
-}
-
 /* content */
 .content{
   height: auto;
@@ -106,21 +97,24 @@ export default{
 /* 共通 */
 .area{
   width: 90vw;
-  height: 200px;
+  height: 250px;
   text-align: start;
   font-size: 23pt;
 }
 
 .first{
+  margin-top: 50px;
+  // background-color: blue;
   .voteChoice{
     width: 100%;
-    height: 150px;
+    height: 200px;
+    // background-color: red;
     display: flex;
     flex-direction: row;
     align-items: center;
     .choice{
       width: 300px;
-      height: 100px;
+      height: 160px;
       background-color: #ffffff77;
       margin-right: 30px;
       font-size: 18pt;
@@ -151,6 +145,8 @@ export default{
 }
 
 .second{
+  margin: 20px;
+  // background-color: blueviolet;
   .secondTitle{
     display: flex;
     flex-direction: row;
@@ -193,8 +189,8 @@ export default{
     padding-left: 50px;
     padding-right: 50px;
     .myVoteBlock{
-      height: 100px;
-      width: 25%;
+      height: 150px;
+      width: 32%;
       background-color: #fff;
       border-radius: 5px;
       margin-top: 10px;
