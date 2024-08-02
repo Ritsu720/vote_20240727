@@ -13,7 +13,13 @@ const router = createRouter({
         path: '/AddVote',
         name: 'AddVote',
         component: () => import('../views/AddVote.vue'),
-      }
+      },
+      {
+        path: '/Group',
+        name: 'Group',
+        component: () => import('../views/GroupCreate.vue'),
+      },
+      
     ]
 })
 

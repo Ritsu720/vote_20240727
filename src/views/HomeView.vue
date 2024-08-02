@@ -30,7 +30,7 @@ export default{
           <p>Create a Vote</p>
         </div>
         <div class="voteChoice">
-          <div class="choiceGroup choice">
+          <div class="choiceGroup choice" @click="goTo('/Group')">
             <p>Group Poll</p>
             <p class="textIntro">Choose your times, let people vote and find the option that suits everyone.</p>
           </div>
