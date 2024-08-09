@@ -4,11 +4,43 @@ import { RouterLink } from 'vue-router';
 export default{
     data(){
         return{
-
+            currentDate: "",
+            defaultEndDate: "",
+            survey: {
+                title: "",
+                description: "",
+                location: "",
+                duration: "",
+                start_date: "",
+                end_date: ""
+            }
         }
     },
     components: {
         RouterLink
+    },
+    created(){
+        // 設置開始日期預設為當天（最小值也是當天）
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+
+        let currDate = `${year}-${month}-${day}`;
+        this.currentDate = currDate;
+        console.log("current date: " + this.currentDate);
+
+        // 設置截數日期預設為當天+7（最小值是開始日期）
+        let defaultEnd = new Date();
+        defaultEnd.setDate(date.getDate() + 7);
+
+        const defaultEndYear = defaultEnd.getFullYear();
+        const defaultEndMonth = (defaultEnd.getMonth() + 1).toString().padStart(2, '0');
+        const defaultEndDay = defaultEnd.getDate().toString().padStart(2, '0');
+
+        let fullEndDate = `${defaultEndYear}-${defaultEndMonth}-${this.defaultEndDate}`
+        this.defaultEndDate = fullEndDate;
+        console.log("default end date: " + this.defaultEndDate)
     },
     methods: {
         goTo(x){
@@ -28,6 +60,7 @@ export default{
         <hr>
         <div class="selection">
             <p>Title</p>
+            <span style="color: red;">*</span>
             <input type="text" class="textInput" placeholder="What's the occasion?">
         </div>
         <div class="selection">
@@ -62,9 +95,7 @@ export default{
         <h2>Options</h2>
         <div class="selectSettings">
             <label for="deadline">Deadline</label>
-            <div class="dateTimePicker">
-
-            </div>
+            <input type="date">
         </div>
         <div class="selectSettings"></div>
         <div class="selectSettings"></div>
